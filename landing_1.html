@@ -1,0 +1,601 @@
+<title>Academia Bróker Hipotecario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap">
+
+<style>
+  :root{
+    --bg:#070707;
+    --bg-2:#0e0e10;
+    --surface:#151517;
+    --surface-2:#1c1c1f;
+    --line:#2a2a2e;
+    --line-soft:#212125;
+    --ink:#f6f5f2;
+    --ink-mut:#a6a6ac;
+    --ink-dim:#76767c;
+    --orange:#ff8a12;
+    --orange-2:#f2600a;
+    --orange-ink:#ffb15a;
+    --green:#27c93f;
+    --gold-1:#e7c069;
+    --gold-2:#b8862f;
+    --danger:#e5484d;
+    --radius:18px;
+    --maxw:1120px;
+    --font-d:"Archivo",system-ui,sans-serif;
+    --font-b:"Manrope",system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-b);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  h1,h2,h3{font-family:var(--font-d);margin:0;text-wrap:balance;letter-spacing:-0.01em;line-height:1.02}
+
+  .eyebrow{
+    font-family:var(--font-d);
+    font-weight:700;
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--orange-ink);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--font-d);font-weight:700;
+    font-size:1rem;letter-spacing:.01em;
+    padding:16px 26px;border-radius:999px;
+    cursor:pointer;border:0;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn svg{width:1.15em;height:1.15em;flex:0 0 auto}
+  .btn-primary{
+    color:#160a00;
+    background:linear-gradient(180deg,var(--orange) 0%,var(--orange-2) 100%);
+    box-shadow:0 10px 30px -10px rgba(242,96,10,.65);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px -10px rgba(242,96,10,.8)}
+  .btn-ghost{
+    color:var(--ink);
+    background:transparent;
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange-ink);transform:translateY(-2px)}
+  .btn-wa{color:#08130a;background:linear-gradient(180deg,#43d854 0%,#1fae30 100%);box-shadow:0 10px 30px -12px rgba(39,201,63,.6)}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(39,201,63,.75)}
+  .btn-sm{padding:11px 18px;font-size:.9rem}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(7,7,7,.82);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;flex-direction:column;line-height:.92;font-family:var(--font-d);font-weight:900}
+  .brand .b1{font-size:.72rem;letter-spacing:.16em;color:var(--ink)}
+  .brand .b2{font-size:.72rem;letter-spacing:.16em;color:var(--orange)}
+  .brand .b3{font-size:.72rem;letter-spacing:.16em;color:var(--ink)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-mut);font-weight:600}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:96px 0 84px;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(70% 55% at 50% -8%,rgba(255,138,18,.18),transparent 60%),
+      radial-gradient(50% 40% at 85% 20%,rgba(242,96,10,.10),transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;text-align:center}
+  .badge-ribbon{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:var(--font-d);font-weight:800;font-size:.74rem;
+    letter-spacing:.16em;text-transform:uppercase;
+    padding:9px 18px;border-radius:999px;
+    color:#1a1204;
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-2));
+    box-shadow:0 8px 24px -12px rgba(184,134,47,.7);
+  }
+  .hero-title{
+    font-weight:900;
+    font-size:clamp(2.9rem,9vw,6.4rem);
+    margin:26px 0 0;
+    text-transform:uppercase;
+    letter-spacing:-0.02em;
+  }
+  .hero-title .l1{color:var(--ink);display:block}
+  .hero-title .l2{
+    display:block;
+    background:linear-gradient(180deg,#ffa53a,var(--orange-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-title .l3{color:var(--ink);display:block;font-size:.62em}
+  .hero-sub{
+    max-width:620px;margin:26px auto 0;
+    color:var(--ink-mut);font-size:1.16rem;
+  }
+  .hero-sub b{color:var(--ink);font-weight:700}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .hero-meta{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:40px;color:var(--ink-dim);font-size:.9rem}
+  .hero-meta span{display:inline-flex;align-items:center;gap:.5em}
+  .hero-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+  /* ---------- section shell ---------- */
+  section{position:relative}
+  .band{padding:88px 0}
+  .band-alt{background:var(--bg-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .sec-head{max-width:720px;margin:0 auto 54px;text-align:center}
+  .sec-head h2{font-weight:800;font-size:clamp(1.9rem,4.5vw,3rem);margin-top:14px}
+  .sec-head p{color:var(--ink-mut);margin:16px auto 0;max-width:620px}
+
+  /* ---------- problem / for whom ---------- */
+  .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pcard{
+    background:var(--surface);border:1px solid var(--line-soft);
+    border-radius:var(--radius);padding:30px 26px;
+  }
+  .pcard .num{font-family:var(--font-d);font-weight:900;font-size:1.05rem;color:var(--orange);letter-spacing:.05em}
+  .pcard h3{font-size:1.22rem;font-weight:700;margin:14px 0 10px}
+  .pcard p{color:var(--ink-mut);font-size:.98rem;margin:0}
+
+  /* ---------- includes / features ---------- */
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 34px;max-width:900px;margin:0 auto}
+  .feat{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line-soft)}
+  .feat .ck{
+    flex:0 0 auto;width:28px;height:28px;border-radius:8px;
+    background:linear-gradient(180deg,#2fd94a,#1a9e2c);
+    display:grid;place-items:center;box-shadow:0 6px 16px -8px rgba(39,201,63,.7);
+  }
+  .feat .ck svg{width:16px;height:16px;color:#06210c}
+  .feat h4{font-family:var(--font-b);font-weight:700;font-size:1.03rem;margin:2px 0 3px}
+  .feat p{margin:0;color:var(--ink-dim);font-size:.9rem}
+
+  /* ---------- testimonials ---------- */
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tcard{
+    background:var(--surface);border:1px solid var(--line-soft);
+    border-radius:var(--radius);overflow:hidden;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .tcard:hover{border-color:var(--line);transform:translateY(-3px)}
+  .tvideo{
+    position:relative;aspect-ratio:16/9;
+    background:
+      radial-gradient(120% 80% at 50% 0%,rgba(255,138,18,.14),transparent 55%),
+      linear-gradient(180deg,#1a1a1d,#101012);
+    display:grid;place-items:center;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .tvideo iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  button.tvideo{width:100%;padding:0;cursor:pointer;font:inherit;color:inherit}
+  .yt-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .yt-thumb.hide{display:none}
+  .tvideo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35));pointer-events:none}
+  .play{
+    position:relative;z-index:1;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(180deg,var(--orange),var(--orange-2));
+    display:grid;place-items:center;
+    box-shadow:0 12px 30px -10px rgba(242,96,10,.85);
+    transition:transform .18s ease;
+  }
+  button.tvideo:hover .play{transform:scale(1.1)}
+  button.tvideo:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  .play svg{width:24px;height:24px;color:#160a00;margin-left:3px}
+  .tvideo .ph-label{position:absolute;z-index:1;bottom:14px;left:0;right:0;text-align:center;font-size:.74rem;color:#e9e9ec;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .tmeta{padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+  .tmeta .name{font-family:var(--font-d);font-weight:700;font-size:1.05rem}
+  .tmeta .role{font-size:.82rem;color:var(--ink-dim)}
+  .stars{color:var(--orange);font-size:.85rem;letter-spacing:2px}
+
+  /* ---------- pricing ---------- */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;max-width:1000px;margin:0 auto}
+  .plan{
+    position:relative;display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--line-soft);
+    border-radius:22px;padding:34px 30px;
+  }
+  .plan.feature{
+    border-color:rgba(255,138,18,.45);
+    background:linear-gradient(180deg,rgba(255,138,18,.06),var(--surface) 40%);
+    box-shadow:0 30px 70px -40px rgba(242,96,10,.6);
+  }
+  .plan-tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    font-family:var(--font-d);font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:7px 16px;border-radius:999px;color:#160a00;
+    background:linear-gradient(180deg,var(--orange),var(--orange-2));white-space:nowrap;
+  }
+  .plan-name{font-family:var(--font-d);font-weight:800;font-size:1.35rem}
+  .plan-desc{color:var(--ink-mut);font-size:.94rem;margin:8px 0 0;min-height:44px}
+  .price{display:flex;align-items:flex-end;gap:6px;margin:22px 0 4px}
+  .price .amount{font-family:var(--font-d);font-weight:900;font-size:3.4rem;line-height:.9;
+    background:linear-gradient(180deg,#ffb15a,var(--orange-2));-webkit-background-clip:text;background-clip:text;color:transparent;
+    font-variant-numeric:tabular-nums;}
+  .price .cur{font-family:var(--font-d);font-weight:900;font-size:1.6rem;color:var(--orange-ink);align-self:flex-start;margin-top:4px}
+  .price .per{color:var(--ink-dim);font-size:.9rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .amount.consult{font-size:1.9rem;line-height:1.1;letter-spacing:-0.01em}
+  .consult-per{color:var(--ink-dim);font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:2px 0 4px}
+  .plan-list{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:13px;flex:1}
+  .plan-list li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--ink)}
+  .plan-list li .mk{flex:0 0 auto;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;margin-top:1px}
+  .plan-list li .mk.yes{background:linear-gradient(180deg,#2fd94a,#1a9e2c)}
+  .plan-list li .mk.yes svg{width:13px;height:13px;color:#06210c}
+  .plan-list li .mk.star{background:rgba(255,138,18,.16);color:var(--orange)}
+  .plan-list li .mk.star svg{width:13px;height:13px;color:var(--orange-ink)}
+  .plan-cta{margin-top:26px}
+  .plan-cta .btn{width:100%;justify-content:center}
+  .plan-note{margin-top:16px;font-size:.82rem;color:var(--ink-dim);display:flex;gap:8px;align-items:flex-start}
+  .plan-note .ast{color:var(--orange)}
+
+  /* ---------- faq ---------- */
+  .faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  details{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:4px 22px;transition:border-color .2s}
+  details[open]{border-color:var(--line)}
+  summary{cursor:pointer;list-style:none;padding:18px 0;font-family:var(--font-d);font-weight:600;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary .ic{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .2s,background .2s,border-color .2s;color:var(--orange-ink)}
+  summary .ic svg{width:13px;height:13px;display:block}
+  details[open] summary .ic{transform:rotate(45deg);background:var(--orange);color:#160a00;border-color:transparent}
+  details p{margin:0 0 20px;color:var(--ink-mut);font-size:.98rem}
+
+  /* ---------- final cta ---------- */
+  .final{position:relative;padding:96px 0;text-align:center;overflow:hidden}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 30%,rgba(255,138,18,.16),transparent 65%)}
+  .final .wrap{position:relative;z-index:1}
+  .final h2{font-weight:900;font-size:clamp(2.1rem,5.2vw,3.6rem);text-transform:uppercase}
+  .final p{color:var(--ink-mut);max-width:560px;margin:18px auto 34px;font-size:1.1rem}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-soft);padding:44px 0;background:var(--bg-2)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--ink-dim);font-size:.86rem}
+  .foot a{color:var(--ink-mut)}
+  .foot a:hover{color:var(--orange-ink)}
+
+  /* ---------- floating wa ---------- */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;
+    background:linear-gradient(180deg,#43d854,#1fae30);display:grid;place-items:center;
+    box-shadow:0 14px 34px -10px rgba(39,201,63,.7);transition:transform .18s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;color:#08130a}
+
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .cards-3{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr;gap:0}
+    .test-grid{grid-template-columns:1fr 1fr}
+    .price-grid{grid-template-columns:1fr}
+    .plan.feature{order:-1}
+  }
+  @media(max-width:560px){
+    body{font-size:16px}
+    .test-grid{grid-template-columns:1fr}
+    .hero{padding:66px 0 60px}
+    .band{padding:64px 0}
+    .foot{flex-direction:column;text-align:center}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Academia Bróker Hipotecario">
+      <span class="b1">ACADEMIA</span>
+      <span class="b2">BRÓKER</span>
+      <span class="b3">HIPOTECARIO</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#formacion">La formación</a>
+      <a href="#incluye">Qué incluye</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#planes">Planes</a>
+    </nav>
+    <a class="btn btn-wa btn-sm" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      Contactar
+    </a>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="badge-ribbon">Formación Avanzada Exclusiva</span>
+    <h1 class="hero-title">
+      <span class="l1">Academia</span>
+      <span class="l2">Bróker</span>
+      <span class="l3">Hipotecario</span>
+    </h1>
+    <p class="hero-sub">Conviértete en <b>Bróker Hipotecario profesional</b>: fórmate, date de alta en el <b>Banco de España como ICI certificado</b> y empieza a cerrar operaciones reales con acompañamiento de principio a fin.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Hablar con Antonio
+      </a>
+      <a class="btn btn-ghost" href="#planes">Ver planes y precios</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span> Acceso vitalicio</span>
+      <span><span class="dot"></span> Mentorías en directo</span>
+      <span><span class="dot"></span> Comunidad privada de brókers</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / PARA QUIÉN ============ -->
+<section class="band band-alt" id="formacion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">El punto de partida</span>
+      <h2>Quieres vivir de la intermediación hipotecaria, pero nadie te enseña el negocio real</h2>
+      <p>Hay mucha teoría suelta y poca ejecución. Esta formación está diseñada para llevarte del cero al alta profesional y a tus primeras operaciones con un método probado.</p>
+    </div>
+    <div class="cards-3">
+      <div class="pcard">
+        <span class="num">01</span>
+        <h3>Sin estructura</h3>
+        <p>Sabes que hay oportunidad en las hipotecas, pero no tienes un camino claro ni sabes por dónde empezar a facturar.</p>
+      </div>
+      <div class="pcard">
+        <span class="num">02</span>
+        <h3>Sin acreditación</h3>
+        <p>El alta como ICI en el Banco de España y la normativa LCCI frenan a la mayoría antes de arrancar. Aquí lo hacemos paso a paso.</p>
+      </div>
+      <div class="pcard">
+        <span class="num">03</span>
+        <h3>Sin red</h3>
+        <p>Trabajar solo es lento. Necesitas casos reales, contactos de tu zona y gente que ya está cerrando operaciones a tu lado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUYE / FEATURES ============ -->
+<section class="band" id="incluye">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Qué incluye la formación</span>
+      <h2>Todo lo que necesitas para convertirte en Bróker Hipotecario</h2>
+      <p>Del onboarding a tus primeras operaciones, con contenido, mentorías en directo y una comunidad que te empuja.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Acceso 24/7 a toda la formación</h4><p>Todo el contenido disponible desde el minuto uno, a tu ritmo.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Mentorías grabadas 2024 · 2025 · 2026</h4><p>Todo el histórico de mentorías para aprender de casos reales.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Comunidad privada de WhatsApp</h4><p>Solo para brókers hipotecarios. Dudas, sinergias y oportunidades.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Mentorías semanales en directo</h4><p>Resolvemos tus dudas, preguntas y casos reales cada semana.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Contactos de tu zona y nacionales</h4><p>Accede a una red de profesionales para colaborar y crecer.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Alta en el Banco de España (ICI)</h4><p>Paso a paso para darte de alta como ICI certificado.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Preparación del examen LCCi</h4><p>Material específico para superar la certificación LCCi.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Acceso a eventos privados</h4><p>Formación, networking y encuentros exclusivos de la comunidad.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Plantillas y herramientas de trabajo</h4><p>Recursos listos para usar en tu día a día.</p></div></div>
+      <div class="feat"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><div><h4>Acceso y actualizaciones vitalicias</h4><p>La formación evoluciona contigo, sin volver a pagar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section class="band band-alt" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Casos reales</span>
+      <h2>Alumnos que ya están cerrando operaciones</h2>
+      <p>Escucha en primera persona cómo la Academia les cambió la forma de trabajar.</p>
+    </div>
+    <div class="test-grid">
+      <article class="tcard">
+        <button class="tvideo" data-yt="ljE74bucthA" aria-label="Reproducir testimonio de Nerea">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/ljE74bucthA/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Nerea</div><div class="role">Alumna de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="EV_g27yQbEA" aria-label="Reproducir testimonio de Jesús">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/EV_g27yQbEA/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Jesús</div><div class="role">Alumno de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="C34SZGCKRrI" aria-label="Reproducir testimonio de Irene">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/C34SZGCKRrI/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Irene</div><div class="role">Alumna de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="heiLEG6ZZG8" aria-label="Reproducir testimonio de Andrés">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/heiLEG6ZZG8/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Andrés</div><div class="role">Alumno de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="YMUoKIoQtps" aria-label="Reproducir testimonio de Roger">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/YMUoKIoQtps/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Roger</div><div class="role">Alumno de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="MZmu9k0EBfc" aria-label="Reproducir testimonio de Miguel">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/MZmu9k0EBfc/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Miguel</div><div class="role">Alumno de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard">
+        <button class="tvideo" data-yt="3P3H-DjEeKU" aria-label="Reproducir testimonio de Darío">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/3P3H-DjEeKU/hqdefault.jpg" alt="" loading="lazy" onerror="this.classList.add('hide')">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ph-label">Ver testimonio</span>
+        </button>
+        <div class="tmeta"><div><div class="name">Darío</div><div class="role">Alumno de la Academia</div></div><div class="stars">★★★★★</div></div>
+      </article>
+      <article class="tcard" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 24px;background:linear-gradient(180deg,rgba(255,138,18,.07),var(--surface))">
+        <div>
+          <div style="font-family:var(--font-d);font-weight:800;font-size:1.35rem;margin-bottom:10px">¿El siguiente eres tú?</div>
+          <p style="color:var(--ink-mut);font-size:.92rem;margin:0 0 18px">Únete a la comunidad y empieza tu camino como bróker hipotecario.</p>
+          <a class="btn btn-primary btn-sm" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">Quiero empezar</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tvideo[data-yt]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-yt');
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+        f.title = btn.getAttribute('aria-label') || 'Testimonio';
+        f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        f.setAttribute('allowfullscreen','');
+        btn.replaceWith(f);
+      });
+    });
+  </script>
+</section>
+
+<!-- ============ PLANES ============ -->
+<section class="band" id="planes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Planes de formación</span>
+      <h2>Elige cómo quieres empezar</h2>
+      <p>Dos formas de acceder a la Academia. Empieza a tu ritmo o entra con acompañamiento completo desde el primer día.</p>
+    </div>
+    <div class="price-grid">
+
+      <!-- PLAN 1497 -->
+      <div class="plan">
+        <div class="plan-name">A tu ritmo</div>
+        <p class="plan-desc">Para quienes prefieren empezar por su cuenta con toda la formación disponible.</p>
+        <div class="price"><span class="cur">€</span><span class="amount">1.497</span><span class="per">/ Vitalicio</span></div>
+        <ul class="plan-list">
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Acceso vitalicio al contenido y a todas las actualizaciones</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Acceso 24/7 a toda la formación desde el primer día</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Paso a paso para el alta en el Banco de España como ICI</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Material para la preparación del examen LCCi</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Acceso a eventos de la Academia</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn btn-ghost" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">Empezar a mi ritmo</a>
+        </div>
+        <div class="plan-note"><span class="ast">✳</span><span>Formación enfocada a quienes prefieren empezar a su ritmo. Puedes pasar al plan completo en cualquier momento abonando la diferencia.</span></div>
+      </div>
+
+      <!-- PLAN 4990 -->
+      <div class="plan feature">
+        <span class="plan-tag">Experiencia completa</span>
+        <div class="plan-name">Completo con mentorías</div>
+        <p class="plan-desc">La experiencia completa con mentorías en directo, comunidad y red de contactos.</p>
+        <div class="price"><span class="amount consult">Consultar disponibilidad</span></div>
+        <div class="consult-per">/ Vitalicio</div>
+        <ul class="plan-list">
+          <li><span class="mk star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.6L21 9l-5 4.3L17.5 20 12 16.5 6.5 20 8 13.3 3 9l6.4-.4z"/></svg></span>Todo lo del plan «A tu ritmo», y además:</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Mentorías semanales en directo para casos reales</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Comunidad privada de WhatsApp (solo brókers)</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Mentorías grabadas 2024 · 2025 · 2026</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Acceso a contactos de tu zona y nacionales</li>
+          <li><span class="mk yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Acceso a eventos privados de la comunidad</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn btn-primary" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Z"/></svg>
+            Entrar con acompañamiento
+          </a>
+        </div>
+        <div class="plan-note"><span class="ast">✳</span><span>La opción recomendada si quieres resultados con acompañamiento, comunidad y casos reales cada semana.</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>¿Necesito experiencia previa en hipotecas?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>No. La formación está diseñada para llevarte desde cero hasta el alta profesional y tus primeras operaciones, tanto si vienes del sector como si empiezas de nuevo.</p>
+      </details>
+      <details>
+        <summary>¿Qué diferencia hay entre los dos planes?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>El plan «A tu ritmo» te da acceso vitalicio a toda la formación para avanzar por tu cuenta. El plan completo añade mentorías en directo, comunidad privada, mentorías grabadas y acceso a la red de contactos. Puedes empezar por el primero y pasar al completo abonando la diferencia.</p>
+      </details>
+      <details>
+        <summary>¿Me ayudáis con el alta en el Banco de España?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Sí. Tienes el paso a paso completo para darte de alta como Intermediario de Crédito Inmobiliario (ICI) certificado, además de material para preparar el examen LCCi.</p>
+      </details>
+      <details>
+        <summary>¿El acceso caduca?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>No. El acceso es vitalicio e incluye todas las actualizaciones futuras de la formación sin coste adicional.</p>
+      </details>
+      <details>
+        <summary>¿Cómo me apunto?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Escríbenos por WhatsApp y te contamos los detalles, resolvemos tus dudas y te guiamos en el proceso de matriculación.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2>Da el paso hacia<br>tu carrera como bróker hipotecario</h2>
+    <p>Hablemos. Cuéntanos tu situación y te decimos exactamente por dónde empezar.</p>
+    <a class="btn btn-primary" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Z"/></svg>
+      Contactar con Antonio
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <div><strong style="color:var(--ink)">Academia Bróker Hipotecario</strong> · Formación avanzada exclusiva</div>
+    <div>© 2026 · <a href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener">Contacto WhatsApp</a></div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a class="wa-float" href="https://wa.me/34613532342?text=Hola%20estoy%20interesado%20en%20tu%20formaci%C3%B3n" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+</a>
